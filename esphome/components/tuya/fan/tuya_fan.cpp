@@ -77,7 +77,7 @@ void TuyaFan::control(const fan::FanCall &call) {
     this->parent_->set_enum_datapoint_value(*this->direction_id_, enable);
   }
   if (this->speed_id_.has_value() && call.get_speed().has_value()) {
-    this->parent_->set_datapoint.set_integer_datapoint_value(*this->speed_id_, *call.get_speed() - 1);
+    this->parent_->set_integer_datapoint_value(*this->speed_id_, *call.get_speed() - 1);
   }
 }
 
