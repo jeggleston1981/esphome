@@ -10,11 +10,11 @@ static const char *const TAG = "tuya.fan";
 void TuyaFan::setup() {
   if (this->speed_id_.has_value()) {
     this->parent_->register_listener(*this->speed_id_, [this](const TuyaDatapoint &datapoint) {
-      ESP_LOGV(TAG, "MCU reported speed of: %d", datapoint.value_int);
-      if (datapoint.value_int >= this->speed_count_) {
-        ESP_LOGE(TAG, "Speed has invalid value %d", datapoint.value_int);
+      ESP_LOGV(TAG, "MCU reported speed of: %d", datapoint.value_uint8_t);
+      if (datapoint.value_uint8_t >= this->speed_count_) {
+        ESP_LOGE(TAG, "Speed has invalid value %d", datapoint.value_uint8_t);
       } else {
-        this->speed = datapoint.value_int + 1;
+        this->speed = datapoint.value_uint8_t + 1;
         this->publish_state();
       }
     });
@@ -77,7 +77,7 @@ void TuyaFan::control(const fan::FanCall &call) {
     this->parent_->set_enum_datapoint_value(*this->direction_id_, enable);
   }
   if (this->speed_id_.has_value() && call.get_speed().has_value()) {
-    this->parent_->set_int_datapoint_value(*this->speed_id_, *call.get_speed() - 1);
+    this->parent_->set_datapoint.value_uint8_t_datapoint_value(*this->speed_id_, *call.get_speed() - 1);
   }
 }
 
