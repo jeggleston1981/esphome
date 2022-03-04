@@ -59,7 +59,8 @@ void CAP1188Component::dump_config() {
   switch (this->error_code_) {
     case COMMUNICATION_FAILED:
       ESP_LOGE(TAG, "Product ID or Manufacture ID of the connected device does not match a known CAP1188.");
-//      break;
+      ESP_LOGE(TAG, "Product ID or Manufacture ID of the connected device does not match a known CAP1188:  0x%x", this->cap1188_product_id_);
+      break;
     case NONE:
     default:
       break;
