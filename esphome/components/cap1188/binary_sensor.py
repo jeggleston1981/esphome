@@ -11,7 +11,7 @@ CONFIG_SCHEMA = binary_sensor.BINARY_SENSOR_SCHEMA.extend(
     {
         cv.GenerateID(): cv.declare_id(CAP1188Channel),
         cv.GenerateID(CONF_CAP1188_ID): cv.use_id(CAP1188Component),
-        cv.Required(CONF_CHANNEL): cv.int_range(min=0, max=7),
+        cv.Required(CONF_CHANNEL): cv.int_range(min=0, max=2),
     }
 )
 
