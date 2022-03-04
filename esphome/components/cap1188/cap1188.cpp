@@ -26,7 +26,7 @@ void CAP1188Component::setup() {
   this->read_byte(CAP1188_MANUFACTURE_ID, &this->cap1188_manufacture_id_);
   this->read_byte(CAP1188_REVISION, &this->cap1188_revision_);
 
-  if ((this->cap1188_product_id_ != 0x6d) || (this->cap1188_manufacture_id_ != 0x5D)) {
+  if ((this->cap1188_product_id_ != 0x6D) || (this->cap1188_manufacture_id_ != 0x5D)) {
     this->error_code_ = COMMUNICATION_FAILED;
     this->mark_failed();
     return;
